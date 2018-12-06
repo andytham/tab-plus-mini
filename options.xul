@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <setting pref="extensions.tabextra.highlightUnloadedTabs" type="bool" title="Highlight Unloaded Tabs">
+    Change text color
+  </setting>
+  <setting pref="extensions.tabextra.boldCurrentTab" type="bool" title="Make Current Tab's Text Bold">
+    Bold selected tab
+  </setting>
+</vbox>
