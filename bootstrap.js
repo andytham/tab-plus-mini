@@ -80,8 +80,8 @@ var WindowListener = {
 
 
     // === Mapping preference to attribute (for styling) ===
-    prefUtils.mapBoolPrefToAttribute("highlightUnloadedTabs", window.gBrowser.tabContainer, "tabextra-highlight-unloaded-tabs");
-		prefUtils.mapBoolPrefToAttribute("boldCurrentTab", window.gBrowser.tabContainer, "tabextra-bold-current-tab");
+    prefUtils.mapBoolPrefToAttribute("highlightUnloadedTabs", window.gBrowser.tabContainer, "tabplusmini-highlight-unloaded-tabs");
+		prefUtils.mapBoolPrefToAttribute("boldCurrentTab", window.gBrowser.tabContainer, "tabplusmini-bold-current-tab");
 
     // Run all the listeners (after a timeout)
     runPostInitListeners(window);

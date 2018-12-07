@@ -3,7 +3,7 @@
  * Also declare global and local preference service
  */
 
-const PREF_BRANCH = "extensions.tabextra.";
+const PREF_BRANCH = "extensions.tabplusmini.";
 // Default pref values
 const PREFS = {
   highlightUnloadedTabs: true,
