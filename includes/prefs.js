@@ -3,7 +3,7 @@
  * Also declare global and local preference service
  */
 
-const PREF_BRANCH = "extensions.tabkit.tab-highlighter.";
+const PREF_BRANCH = "extensions.tabextra.";
 // Default pref values
 const PREFS = {
   highlightUnloadedTabs: true,
