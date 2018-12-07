@@ -5,28 +5,30 @@ function setTabLoadOnTabSelect (e) {
 
 function setTabLoad (tab) {
   tab.setAttribute("load", "true");
-  console.log("load set");
+  // tab.addEventListener("click", function() {console.log("tab click", this);}, true)
+  // tab.addEventListener("load",function() {console.log("DOM LOADED", this);}, true)
 }
 
 function setTabUnload (tab) {
   tab.removeAttribute("load");
 }
 function onLoad (e) {
-  console.log("window load");
   var tab = e.target;
-  // tab.setAttribute("isLoaded","true");
-
-  console.log(tab);
+  tab.setAttribute("isLoaded","true");
+  console.log("onLoad!");
 }
+
 function initTabUnload(window) {
   
   setTabUnload(window.gBrowser.selectedTab);
-
+// console.log(window);
+  // console.log(window.gBrowser);
   // sessionStore.persistTabAttribute("load");
-  console.log("logging window");
-  console.log(window);
   window.gBrowser.tabContainer.addEventListener("TabSelect", setTabLoadOnTabSelect, true);
-  window.gBrowser.tabs.addEventListener("load", onLoad, false);
+  for(var i = 0; i < window.gBrowser.tabs.length; i++){
+    window.gBrowser.tabs[i].addEventListener("load", onLoad, false);
+  }
+
   unload(function() window.gBrowser.tabContainer.removeEventListener("load", setTabLoadOnTabSelect));
   unload(function() window.gBrowser.tabContainer.removeEventListener("TabSelect", setTabLoadOnTabSelect));
 
