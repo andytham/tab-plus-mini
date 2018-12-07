@@ -2,7 +2,7 @@
 /* Hightlight unloaded tabs (tabs without attribute `read`) */
 
 /* .tabbrowser-tabs[tabextra-highlight-unloaded-tabs]:not([tabextra-color-label-not-tab]) .tabbrowser-tab:not([selected="true"]):not([read]) .tab-text { */
-.tabbrowser-tabs[tabextra-highlight-unloaded-tabs] .tabbrowser-tab:not([selected="true"]):not([isLoaded]) .tab-text {
+.tabbrowser-tabs[tabextra-highlight-unloaded-tabs] .tabbrowser-tab:not([selected="true"])[pending] .tab-text {
   /* color: #800000 !important; */
   color: #c241c2;
   font-style: italic !important;
