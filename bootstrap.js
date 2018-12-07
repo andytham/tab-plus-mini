@@ -57,7 +57,7 @@ Cu.import("resource://gre/modules/AddonManager.jsm");
 // Just like code separated into different files
 include("includes/prefs.js");
 include("includes/init-listeners.js");
-include("includes/tab-unread.js");
+// include("includes/tab-unload.js");
 
 
 // Require any CommonJS style files
