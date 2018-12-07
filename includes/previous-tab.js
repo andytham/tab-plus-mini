@@ -1,10 +1,10 @@
 let previousTabIndex = 0;
 let currentTabIndex = 1;
-
+let win;
 function selectTab(e){
 	let tab = e.target;
-	console.log('tab is closing');
-	window.gBrowser.selectedTab = window.gBrowser.tabs[0]
+	console.log('tab is closing', win);
+	win.selectedTab = win.tabs[0]
 }
 
 function setPreviousTab(){
@@ -23,6 +23,7 @@ function loadPreviousTab(){
 
 function initPreviousTab(window){
 	console.log("prev tab js running");
+	win = window.gBrowser;
 	window.gBrowser.tabContainer.addEventListener("TabClose", selectTab, true);
 	window.gBrowser.tabContainer.addEventListener("TabSelect", setCurrentTab, true)
 
