@@ -22,6 +22,7 @@ function loadPreviousTab(){
 }
 
 function initPreviousTab(window){
+	console.log("prev tab js running");
 	window.gBrowser.tabContainer.addEventListener("TabClose", selectTab, true);
 	window.gBrowser.tabContainer.addEventListener("TabSelect", setCurrentTab, true)
 

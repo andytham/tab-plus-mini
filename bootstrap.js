@@ -58,6 +58,7 @@ Cu.import("resource://gre/modules/AddonManager.jsm");
 include("includes/prefs.js");
 include("includes/init-listeners.js");
 include("includes/unloaded-tabs.js");
+include("includes/previous-tab.js");
 
 
 // Require any CommonJS style files
@@ -143,6 +144,7 @@ function startup(data, reasonCode) {
   // === Register methods that should be run after most extensions ===
   // Since some event listeners can only be added at that time
   postInitListeners.push(initTabUnload);
+  postInitListeners.push(initPreviousTab);
   
 
   let wm = Cc["@mozilla.org/appshell/window-mediator;1"].
