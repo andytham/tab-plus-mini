@@ -5,7 +5,7 @@
     <creator>andytham</creator>
     <id>tab-extra@andytham</id>
     <name>Tab Extra</name>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <bootstrap>true</bootstrap>
     <type>2</type>
     <homepageURL>https://github.com/andytham/tab-extra</homepageURL>
