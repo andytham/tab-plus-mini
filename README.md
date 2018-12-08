@@ -16,5 +16,10 @@ close tab puts us back to last used tab
 	set active tab to last index
 Add bools for these above options
 
+re-evaluate how to deal with closing tabs
+	create an array of the history of tabs?
+
+tmp solves the issue of how they deal with tabs by literally _rewriting_ pale moons code, i.e. the tab methods that run in the background and aren't exposed. I will attempt to mimic this if I have time.
+
 Future TODO:
 add custom options for CSS
