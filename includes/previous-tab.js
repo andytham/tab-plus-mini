@@ -53,10 +53,24 @@ function adjustTabHistory(e){
 function prevTabOnClose(e){
 	let closingTab = e.target;
 	let newTab = gBrowser.selectedTab;
-
+	let t1 = tabHistory[tabHistory.length - 1];
+	let t2 = tabHistory[tabHistory.length - 2];
+	let t3 = tabHistory[tabHistory.length - 3];
 	let prevTab;
+	// console.log(t1.attributes.label,t2.attributes.label,t3.attributes.label);
+	// console.log('closing', closingTab.attributes.label);
+
+	//check if it is even the active tab being closed
+	//need this because it only covered when the two tabs were next to each other
+	if (closingTab != t2){
+		for(let i = 0; i < tabHistory.length; i++){
+			if(tabHistory[i] == closingTab){
+				tabHistory.splice(i, 1);
+			}
+		}
+	}
 	//check if NOT the previous tab was the one underneath the closing tab
-	if(tabHistory[tabHistory.length - 1] != tabHistory[tabHistory.length - 3]){
+	else if(tabHistory[tabHistory.length - 1] != tabHistory[tabHistory.length - 3]){
 		prevTab = tabHistory[tabHistory.length - 3];
 		for(let i = 0; i < tabHistory.length; i++){
 			if(tabHistory[i] == closingTab){
@@ -65,7 +79,7 @@ function prevTabOnClose(e){
 		}
 		tabHistory.splice(tabHistory.length - 1, 1); //delete tab that was loaded due to Firefox "adopted by" from history
 		gBrowser.selectedTab = prevTab;
-	} else {
+	} else { 
 		for(let i = 0; i < tabHistory.length; i++){
 			if(tabHistory[i] == closingTab){
 				tabHistory.splice(i, 1); //delete closing tab from history and reindex

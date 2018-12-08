@@ -23,3 +23,15 @@ tmp solves the issue of how they deal with tabs by literally _rewriting_ pale mo
 
 Future TODO:
 add custom options for CSS
+
+CHANGELOG:
+
+0.2.1
+- Fixed moving between tabs when you aren't closing active tab.
+
+0.2.0
+- Select previous tab upon closing current tab.
+
+0.1.1
+- Bold currently selected tab.
+- Italicized and colorize text for unloaded or "pending" tabs.
