@@ -37,23 +37,31 @@ function setCurrentTab(e){
 
 function adjustTabHistory(e){
 	let tab = e.target;
-	for(let i = 0; i < tabHistory.length; i++){
-		if(tabHistory[i] == tab){
-			tabHistory.splice(i, 1); //delete from array and reindex
-		}
-	}
 	tabHistory.push(tab);
 }
 
 function prevTabOnClose(e){
 	let closingTab = e.target;
 	let newTab = gBrowser.selectedTab;
-	let activeTab = tabHistory[tabHistory.length - 2];
-	let prevTab = tabHistory[tabHistory.length - 3];
-	
-	if (closingTab == activeTab){
+
+	let prevTab;
+	//check if NOT the previous tab was the one underneath the closing tab
+	if(tabHistory[tabHistory.length - 1] != tabHistory[tabHistory.length - 3]){
+		prevTab = tabHistory[tabHistory.length - 3];
+		for(let i = 0; i < tabHistory.length; i++){
+			if(tabHistory[i] == closingTab){
+				tabHistory.splice(i, 1); //delete closing tab from history and reindex
+			}
+		}
+		tabHistory.splice(tabHistory.length - 1, 1); //delete tab that was loaded due to Firefox "adopted by" from history
 		gBrowser.selectedTab = prevTab;
-	}
+	} else {
+		for(let i = 0; i < tabHistory.length; i++){
+			if(tabHistory[i] == closingTab){
+				tabHistory.splice(i, 1); //delete closing tab from history and reindex
+			}
+		}
+	} 
 }
 
 function onModify(e){
