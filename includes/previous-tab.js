@@ -37,7 +37,18 @@ function setCurrentTab(e){
 
 function adjustTabHistory(e){
 	let tab = e.target;
-	tabHistory.push(tab);
+	console.log(tabHistory);
+	if (tab != tabHistory[tabHistory.length-2]){ 
+		for(let i = 0; i < tabHistory.length; i++){
+			if(tabHistory[i] == tab){
+				tabHistory.splice(i, 1); //delete closing tab from history and reindex
+			}
+		}
+		tabHistory.push(tab);
+	} else {
+		tabHistory.splice(tabHistory.length - 2, 1); //delete old entry
+		tabHistory.push(tab);
+	}
 }
 
 function prevTabOnClose(e){
@@ -72,7 +83,6 @@ function onModify(e){
 }
 
 function initPreviousTab(window){
-	console.log("prev tab js running");
 	gBrowser = window.gBrowser;
 	window.gBrowser.tabContainer.addEventListener("TabSelect", adjustTabHistory, true);
 	window.gBrowser.tabContainer.addEventListener("TabClose", prevTabOnClose, true);

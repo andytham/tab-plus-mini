@@ -13,7 +13,6 @@ function setTabUnload (tab) {
 
 
 function initTabUnload(window) {
-  console.log('unloaded js running');
   setTabUnload(window.gBrowser.selectedTab);
 
   window.gBrowser.tabContainer.addEventListener("TabSelect", setTabLoadOnTabSelect, true);
