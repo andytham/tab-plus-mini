@@ -7,6 +7,6 @@
     Bold selected tab
   </setting>
   <setting pref="extensions.tabplusmini.selectPreviousTabOnClose" type="bool" title="Focus Previously Selected Tab When Closing Tab">
-    Focus previously selected tab when closing the current one
+    Focus previously selected tab when closing the current one (requires a browser restart)
   </setting>
 </vbox>
