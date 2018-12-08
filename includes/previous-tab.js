@@ -37,7 +37,6 @@ function setCurrentTab(e){
 
 function adjustTabHistory(e){
 	let tab = e.target;
-	console.log(tabHistory);
 	if (tab != tabHistory[tabHistory.length-2]){ 
 		for(let i = 0; i < tabHistory.length; i++){
 			if(tabHistory[i] == tab){
