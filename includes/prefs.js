@@ -7,7 +7,8 @@ const PREF_BRANCH = "extensions.tabplusmini.";
 // Default pref values
 const PREFS = {
   highlightUnloadedTabs: true,
-  boldCurrentTab: true
+  boldCurrentTab: true,
+  selectPreviousTabOnClose: true
 };
 
 // Make sure we can use gPrefService from now on (even if this isn't a browser window!)

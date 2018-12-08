@@ -75,21 +75,17 @@ function prevTabOnClose(e){
 	} 
 }
 
-function onModify(e){
-	let tab = e.target;
-	if (tab.closing){
-		console.log("tab closing!");
-	}
-}
 
 function initPreviousTab(window){
 	gBrowser = window.gBrowser;
-	window.gBrowser.tabContainer.addEventListener("TabSelect", adjustTabHistory, true);
-	window.gBrowser.tabContainer.addEventListener("TabClose", prevTabOnClose, true);
+	if (gBrowser.tabContainer.getAttribute("tabplusmini-select-previous-tab-on-close")){
+		window.gBrowser.tabContainer.addEventListener("TabSelect", adjustTabHistory, true);
+		window.gBrowser.tabContainer.addEventListener("TabClose", prevTabOnClose, true);
+	
+		unload(function() {window.gBrowser.tabContainer.removeEventListener("TabSelect", adjustTabHistory)});
+		unload(function() {window.gBrowser.tabContainer.removeEventListener("tabClose", prevTabOnClose)});
+	}
 
-	window.gBrowser.tabContainer.addEventListener("TabAttrModified", onModify, true);
-	unload(function() {window.gBrowser.tabContainer.removeEventListener("TabSelect", adjustTabHistory)});
-	unload(function() {window.gBrowser.tabContainer.removeEventListener("tabClose", prevTabOnClose)});
 }
 
 // window.gBrowser.tabContainer.addEventListener("beforeunload", function(e){console.log(e.target);}, true);

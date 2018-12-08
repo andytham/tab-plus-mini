@@ -82,7 +82,7 @@ var WindowListener = {
     // === Mapping preference to attribute (for styling) ===
     prefUtils.mapBoolPrefToAttribute("highlightUnloadedTabs", window.gBrowser.tabContainer, "tabplusmini-highlight-unloaded-tabs");
 		prefUtils.mapBoolPrefToAttribute("boldCurrentTab", window.gBrowser.tabContainer, "tabplusmini-bold-current-tab");
-
+    prefUtils.mapBoolPrefToAttribute("selectPreviousTabOnClose", window.gBrowser.tabContainer, "tabplusmini-select-previous-tab-on-close")
     // Run all the listeners (after a timeout)
     runPostInitListeners(window);
   },
