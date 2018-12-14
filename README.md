@@ -26,6 +26,10 @@ add custom options for CSS
 
 CHANGELOG:
 
+0.3.0
+- Discovered "loophole" to skipping Pale Moon from focusing on the adjacent tab on tab close. (previously had written logic to move the focus after Pale Moon did it's thing, and it got complicated fast)
+- Redid all the logic for 'previous tab', much simpler and properly works now.
+- Appears to be no longer necessary to learn how to rewrite how Pale Moon deals with closed tabs under the hood.
 0.2.1
 - Fixed moving between tabs when you aren't closing active tab.
 
