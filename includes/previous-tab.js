@@ -37,14 +37,14 @@ function setCurrentTab(e){
 
 function adjustTabHistory(e){
 	let tab = e.target;
-	if (tab != tabHistory[tabHistory.length-2]){ 
+	if (tab != tabHistory[tabHistory.length-2]){ //if new tab is NOT the tab that we want to go to
 		for(let i = 0; i < tabHistory.length; i++){
 			if(tabHistory[i] == tab){
 				tabHistory.splice(i, 1); //delete closing tab from history and reindex
 			}
 		}
 		tabHistory.push(tab);
-	} else {
+	} else { //if it is, just push the new tab to top of list
 		tabHistory.splice(tabHistory.length - 2, 1); //delete old entry
 		tabHistory.push(tab);
 	}
@@ -69,6 +69,9 @@ function prevTabOnClose(e){
 			}
 		}
 	}
+	else if (gBrowser.selectedTab == t1){
+
+	}
 	//check if NOT the previous tab was the one underneath the closing tab
 	else if(tabHistory[tabHistory.length - 1] != tabHistory[tabHistory.length - 3]){
 		prevTab = tabHistory[tabHistory.length - 3];
@@ -79,7 +82,7 @@ function prevTabOnClose(e){
 		}
 		tabHistory.splice(tabHistory.length - 1, 1); //delete tab that was loaded due to Firefox "adopted by" from history
 		gBrowser.selectedTab = prevTab;
-	} else { 
+	} else { // i don't think this ever runs
 		for(let i = 0; i < tabHistory.length; i++){
 			if(tabHistory[i] == closingTab){
 				tabHistory.splice(i, 1); //delete closing tab from history and reindex
