@@ -3,7 +3,7 @@ let prevTemp = -2;
 let currentTabIndex = 1;
 let gBrowser;
 let tabHistory = [];
-
+let selectCounter = 0;
 function closeTab(e){
 	let closingTab = e.target;
 	let currentTab = gBrowser.selectedTab;
@@ -37,58 +37,33 @@ function setCurrentTab(e){
 
 function adjustTabHistory(e){
 	let tab = e.target;
-	if (tab != tabHistory[tabHistory.length-2]){ //if new tab is NOT the tab that we want to go to
-		for(let i = 0; i < tabHistory.length; i++){
-			if(tabHistory[i] == tab){
-				tabHistory.splice(i, 1); //delete closing tab from history and reindex
-			}
-		}
-		tabHistory.push(tab);
-	} else { //if it is, just push the new tab to top of list
-		tabHistory.splice(tabHistory.length - 2, 1); //delete old entry
-		tabHistory.push(tab);
-	}
-}
-
-function prevTabOnClose(e){
-	let closingTab = e.target;
-	let newTab = gBrowser.selectedTab;
 	let t1 = tabHistory[tabHistory.length - 1];
 	let t2 = tabHistory[tabHistory.length - 2];
 	let t3 = tabHistory[tabHistory.length - 3];
-	let prevTab;
-	// console.log(t1.attributes.label,t2.attributes.label,t3.attributes.label);
-	// console.log('closing', closingTab.attributes.label);
 
-	//check if it is even the active tab being closed
-	//need this because it only covered when the two tabs were next to each other
-	if (closingTab != t2){
+	function deleteHistoryClosingTab(targetTab) {
 		for(let i = 0; i < tabHistory.length; i++){
-			if(tabHistory[i] == closingTab){
-				tabHistory.splice(i, 1);
-			}
-		}
-	}
-	else if (gBrowser.selectedTab == t1){
-
-	}
-	//check if NOT the previous tab was the one underneath the closing tab
-	else if(tabHistory[tabHistory.length - 1] != tabHistory[tabHistory.length - 3]){
-		prevTab = tabHistory[tabHistory.length - 3];
-		for(let i = 0; i < tabHistory.length; i++){
-			if(tabHistory[i] == closingTab){
+			if(tabHistory[i] == targetTab){
 				tabHistory.splice(i, 1); //delete closing tab from history and reindex
 			}
 		}
-		tabHistory.splice(tabHistory.length - 1, 1); //delete tab that was loaded due to Firefox "adopted by" from history
-		gBrowser.selectedTab = prevTab;
-	} else { // i don't think this ever runs
-		for(let i = 0; i < tabHistory.length; i++){
-			if(tabHistory[i] == closingTab){
-				tabHistory.splice(i, 1); //delete closing tab from history and reindex
-			}
+	}
+	if(t1){
+		if (t1.closing == true){ //see if tab currently on is being closed
+			deleteHistoryClosingTab(t1)
+			gBrowser.selectedTab = t2
+		} else {
+			tabHistory.push(tab);
 		}
-	} 
+	} else {
+		tabHistory.push(tab);
+	}
+
+
+}
+
+function prevTabOnClose(e){
+	console.log("after close");
 }
 
 
