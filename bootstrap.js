@@ -142,7 +142,6 @@ function startup(data, reasonCode) {
 
   // === Register methods that should be run after most extensions ===
   // Since some event listeners can only be added at that time
-  postInitListeners.push(initTabUnload);
   postInitListeners.push(initPreviousTab);
   
 
